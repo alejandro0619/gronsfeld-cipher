@@ -2,7 +2,7 @@ import { mapToNumbers } from "./mapping";
 import { generateTable } from "./tableReader";
 import { mapLettersToPosition } from "./mapAlphabet";
 
-export function encryptMessage(input: string): String {
+export function encryptMessage(input: string): string {
     let encryptedInput = "";
 
     const inputWithKey = mapToNumbers(input, "1235")
@@ -11,13 +11,11 @@ export function encryptMessage(input: string): String {
     inputWithKey.forEach(pair => {
         const letter = pair[0];
         const key = pair[1];
-        const column = table[key];
-        const row = mapLettersToPosition().get(letter[0]);
-        if(row) {
-            encryptedInput += column[row - 1];
+        const row = table[key];
+        const column = mapLettersToPosition().get(letter[0]);
+        if(column) {
+            encryptedInput += row[column - 1];
         }
-        
-
     })
 
     return encryptedInput;
