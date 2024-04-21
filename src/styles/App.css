@@ -46,3 +46,8 @@ button {
 button:hover {
     background-color: #5b516447; /* Darker green on hover */
 }
+
+#result {
+    color: white;
+    background-color: #333b3be6;
+}

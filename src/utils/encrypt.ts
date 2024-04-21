@@ -7,7 +7,7 @@ export function encryptMessage(input: string): string {
 
     const inputWithKey = mapToNumbers(input, "1235")
     const table: string[][] = TABLE.split('\n').map(line => line.split(' ').filter(char => char !== ''));
-
+    console.log(table)
     inputWithKey.forEach(pair => {
         const letter = pair[0];
         const key = pair[1];

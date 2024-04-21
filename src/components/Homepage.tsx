@@ -10,23 +10,30 @@ interface Encrypt {
 
 export default function HomePage({decrypt, encrypt}: {decrypt: Decrypt, encrypt: Encrypt}) {
     const [input, setInput] = useState('');
-    const [keys, setKeys] = useState('');
+    const [key, setKey] = useState('');
+    const [isEncrypt, setIsEncrypt] = useState(true);
+    const [result, setResult] = useState('')
+
+    const btnMsg = isEncrypt ? 'Encrypt' : 'Decrypt';
 
     const handleInputEvent = (evt: React.ChangeEvent<HTMLInputElement>) => {
         setInput(evt.target.value)
     }
+    
     const handleKeyEvent = (evt: React.ChangeEvent<HTMLInputElement>) => {
-        setKeys(evt.target.value)
+        setKey(evt.target.value)
     }
-    const handleEncrypt = () => {
-        const encryptedValue = encrypt(input, keys);
-        console.log(encryptedValue)
+    const handleBtnClick = ()=> {
+        console.log('el estado es:', isEncrypt)
+        if(isEncrypt) {
+            setResult(encrypt(input, key));
+            setIsEncrypt(false)
+        } else {
+            setResult(decrypt(result, key));
+            setIsEncrypt(true)
+        }
     }
 
-    const handleDecrypt = () => {
-        const decryptedValue = decrypt(input, keys);
-        console.log(decryptedValue)
-    }
 
     return (
         <>
@@ -50,13 +57,12 @@ export default function HomePage({decrypt, encrypt}: {decrypt: Decrypt, encrypt:
                     className="main-container-textbox" 
                     disabled={true} 
                     type="text" 
-                    id="result" 
-                    placeholder="The result is:"
+                    id="result"
+                    placeholder={`The resulted message is: ${result}`}
                  />
                 </div>
 
-                <button onClick={handleEncrypt} id="encrypt">Encrypt</button>
-                <button onClick={handleDecrypt} id="Decrypt">Decrypt</button>
+                <button onClick={handleBtnClick} id="encrypt">{btnMsg}</button>
             </div>
             
         </>
