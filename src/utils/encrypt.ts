@@ -1,12 +1,12 @@
 import { mapToNumbers } from "./mapping";
-import { generateTable } from "./tableReader";
 import { mapLettersToPosition } from "./mapAlphabet";
+import TABLE from "./table";
 
 export function encryptMessage(input: string): string {
     let encryptedInput = "";
 
     const inputWithKey = mapToNumbers(input, "1235")
-    const table = generateTable("./table.txt");
+    const table: string[][] = TABLE.split('\n').map(line => line.split(' ').filter(char => char !== ''));
 
     inputWithKey.forEach(pair => {
         const letter = pair[0];

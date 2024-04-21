@@ -1,16 +1,15 @@
 import { mapToNumbers } from "./mapping";
-import { generateTable } from "./tableReader";
 import { mapLettersToPosition } from "./mapAlphabet";
+import TABLE from "./table";
 
-
-export function decryptMessage(input: string): String {
+export function decryptMessage(input: string, key: string): string {
 
     let originalMessage: string = "";
 
 
-    const inputWithKey = mapToNumbers(input, "1235");
+    const inputWithKey = mapToNumbers(input, key);
 
-    const table = generateTable("./table.txt");
+    const table: string[][] = TABLE.split('\n').map(line => line.split(' ').filter(char => char !== ''));
 
     inputWithKey.forEach(pair => {
         const letter = pair[0];
