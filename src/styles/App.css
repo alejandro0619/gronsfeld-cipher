@@ -5,7 +5,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    font: system-ui;
+    font: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     
 }
 .title {
@@ -14,7 +14,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: start;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .main-container{
 
@@ -39,7 +38,7 @@ body {
     border: 1px solid #ccc;
     flex-grow: 1;
     flex-shrink: 1;
-    font-size:2em
+    font-size:2em;
 }
 button {
     background-color: #86759647; /* Green */

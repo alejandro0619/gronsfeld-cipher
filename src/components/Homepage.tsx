@@ -36,10 +36,10 @@ export default function HomePage({
   const handleBtnClick = () => {
     if (isEncrypt) {
       setResult(encrypt(input, key));
-      setIsEncrypt(false);
+      setIsEncrypt(!isEncrypt);
     } else {
       setResult(decrypt(result, key));
-      setIsEncrypt(true);
+    setIsEncrypt(!isEncrypt);
     }
   };
 
